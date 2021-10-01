@@ -17,18 +17,18 @@ services:
     hostname: splunk
     ports:
       - 8000:8000
-      - 8089:8089
-      - 8088:8088
     environment:
       - SPLUNK_START_ARGS=--accept-license
       - SPLUNK_PASSWORD=efcasado
       - SPLUNK_HEC_TOKEN=abcd1234
       - DEBUG=true
 
-  elixir:
-    image: elixir:1.12.3-alpine
-    stdin_open: true
-    tty: true
+  dummy_app:
+    build:
+      context: ./dummy_app
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
     depends_on:
       - fluentd
     logging:
