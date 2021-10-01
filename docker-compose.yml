@@ -1,0 +1,38 @@
+version: "2"
+
+services:
+  fluentd:
+    build:
+      context: .
+      dockerfile: Dockerfile.fluentd
+    ports:
+      - 24224:24224
+    environment:
+      - FLUENTD_CONF=test.conf
+    volumes:
+      - ./files/fluentd/fluentd/etc/test.conf:/fluentd/etc/test.conf
+
+  splunk:
+    image: splunk/splunk:8.1
+    hostname: splunk
+    ports:
+      - 8000:8000
+      - 8089:8089
+      - 8088:8088
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=efcasado
+      - SPLUNK_HEC_TOKEN=abcd1234
+      - DEBUG=true
+
+  elixir:
+    image: elixir:1.12.3-alpine
+    stdin_open: true
+    tty: true
+    depends_on:
+      - fluentd
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: "tcp://localhost:24224"
+        tag: "docker.{{.ID}}"
