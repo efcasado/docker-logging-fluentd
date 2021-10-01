@@ -1,7 +1,6 @@
 FROM fluent/fluentd:v1.14
 
 USER root
-#RUN fluent-gem install fluent-plugin-splunk-enterprise
-RUN fluent-gem install fluent-plugin-splunk-hec
+RUN gem install fluent-plugin-splunk-hec
 
 USER fluent

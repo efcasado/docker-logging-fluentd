@@ -11,3 +11,4 @@ make up
 - [Logging drivers in Docker](https://docs.docker.com/config/containers/logging/configure/)
 - [FluentD logging driver](https://docs.docker.com/config/containers/logging/fluentd/)
 - [Splunk's Docker image](https://splunk.github.io/docker-splunk/)
+- [FluentD output plugin for Splunk](https://github.com/splunk/fluent-plugin-splunk-hec)
