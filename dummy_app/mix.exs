@@ -22,8 +22,8 @@ defmodule DummyApp.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:plug_cowboy, "~> 2.5"},
-      {:ink, "~> 1.2"}
+      {:json, "~> 1.4"},
+      {:plug_cowboy, "~> 2.5"}
     ]
   end
 end

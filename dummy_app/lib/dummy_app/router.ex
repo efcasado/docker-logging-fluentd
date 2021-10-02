@@ -2,7 +2,7 @@ defmodule DummyApp.Router do
   use Plug.Router
   require Logger
 
-  plug Plug.Logger, log: :debug
+  plug DummyApp.Plug.Logger, log: :debug
   plug :match
   plug :dispatch
 
