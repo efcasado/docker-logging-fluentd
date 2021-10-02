@@ -11,6 +11,9 @@ services:
       - FLUENTD_CONF=test.conf
     volumes:
       - ./files/fluentd/fluentd/etc/test.conf:/fluentd/etc/test.conf
+    depends_on:
+      splunk:
+        condition: service_healthy
 
   splunk:
     image: splunk/splunk:8.1
